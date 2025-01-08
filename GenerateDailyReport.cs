@@ -24,7 +24,7 @@ public class GenerateDailyReport
             .ToDictionary(group => group.Key, group => group.Count());
         foreach (var entry in problemTypeCount)
         {
-            await _fileLoggerService.LogToFileAsync($"report_{DateTime.Now.AddDays(-ONE_DAY):yyyy-MM-dd}.txt", $"{entry.Key}: {entry.Value}");
+            await _fileLoggerService.LogToFileAsync($"report_{DateTime.Now.AddDays(-ONE_DAY):yyyy-MM-dd}.txt", $"{entry.Key}: {entry.Value}\n");
         }
     }
 

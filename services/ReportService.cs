@@ -8,7 +8,7 @@ public class ReportService
 {
     public ReportService(IConfiguration configuration)
     {
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(configuration.GetConnectionString(AZURE_STORAGE));
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(configuration.GetValue<string>(AZURE_STORAGE));
         CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
         _reportsTable = tableClient.GetTableReference(TABLE_NAME);
         _reportsTable.CreateIfNotExistsAsync().Wait();
@@ -36,6 +36,6 @@ public class ReportService
 
     private readonly CloudTable _reportsTable;
     private const string TABLE_NAME = "Reports";
-    private const string AZURE_STORAGE = "AzureStorage";
+    private const string AZURE_STORAGE = "AzureWebJobsStorage";
     private const string REPORT_DATE = "ReportDate";
 }

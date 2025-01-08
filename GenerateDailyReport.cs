@@ -32,6 +32,6 @@ public class GenerateDailyReport
     private readonly ReportService _reportService;
     private readonly FileLoggerService _fileLoggerService;
     private const string GENERATE_DAILY_REPORT_FUNCTION_NAME = "GenerateDailyReport";
-    private const string CRON_EXPRESSION = "0 0 * * *";
+    private const string CRON_EXPRESSION = "0 0 0 * * *";
     private const int ONE_DAY = 1;
 }
